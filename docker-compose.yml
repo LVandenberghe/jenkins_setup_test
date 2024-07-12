@@ -1,0 +1,19 @@
+services:
+    jenkins:
+        ports:
+            - 8080:8080
+        volumes:
+            - jenkins_home:/var/jenkins_home
+            - ./my_marvin.yml:/var/jenkins_conf
+        environment:
+            - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+            - USER_CHOCOLATEEN_PASSWORD=admin
+            - USER_VAUGIE_G_PASSWORD=admin
+            - USER_I_DONT_KNOW_PASSWORD=admin
+            - USER_NASSO_PASSWORD=admin
+            - CASC_JENKINS_CONFIG=/var/jenkins_conf/
+        build:
+            context: "."
+
+volumes:
+    jenkins_home:
